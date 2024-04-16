@@ -112,69 +112,78 @@ export const Report_Assesment = () => {
   }
 
   return (
-    <div className="mt-36 ml-32">
-      <text className="text-app-Teal font-bold text-2xl">
-        Report Card Ideal Persona
-      </text>
-      <Box sx={{ maxWidth: 400 }}>
-        <Stepper
-          activeStep={activeStep}
-          orientation="vertical"
-          connector={<QontoConnector />}>
-          {steps.map((step, index) => (
-            <Step key={step.label}>
-              <StepLabel StepIconComponent={QontoStepIcon}>
-                {step.label}
-              </StepLabel>
-              <StepContent>
-                <Typography sx={{ color: "#008080" }}>
-                  {step.description}
-                </Typography>
-                <Box sx={{ mb: 2 }}>
-                  <div>
-                    <Button
-                      variant="contained"
-                      onClick={handleNext}
-                      sx={{
-                        mt: 1,
-                        mr: 1,
-                        color: "white",
-                        backgroundColor: "#008080",
-                      }}>
-                      {index === steps.length - 1 ? "Finish" : "Continue"}
-                    </Button>
-                    <Button
-                      variant="contained"
-                      disabled={index === 0}
-                      onClick={handleBack}
-                      sx={{
-                        mt: 1,
-                        mr: 1,
-                        color: "white",
-                        backgroundColor: "#66B2B2",
-                      }}>
-                      Back
-                    </Button>
-                  </div>
-                </Box>
-              </StepContent>
-            </Step>
-          ))}
-        </Stepper>
-        {activeStep === steps.length && (
-          <Paper square elevation={0} sx={{ p: 3 }}>
-            <Typography>All steps completed - you&apos;re finished</Typography>
-            <Button
-              variant="contained"
-              onClick={handleReset}
-              sx={{ mt: 1, mr: 1, color: "white", backgroundColor: "#008080" }}>
-              Reset
-            </Button>
-          </Paper>
-        )}
-      </Box>
+    <>
+      <div className="mt-36 ml-32">
+        <text className="text-app-Teal font-bold text-2xl">
+          Report Card Ideal Persona
+        </text>
+        <Box sx={{ maxWidth: 400 }}>
+          <Stepper
+            activeStep={activeStep}
+            orientation="vertical"
+            connector={<QontoConnector />}>
+            {steps.map((step, index) => (
+              <Step key={step.label}>
+                <StepLabel StepIconComponent={QontoStepIcon}>
+                  {step.label}
+                </StepLabel>
+                <StepContent>
+                  <Typography sx={{ color: "#008080" }}>
+                    {step.description}
+                  </Typography>
+                  <Box sx={{ mb: 2 }}>
+                    <div>
+                      <Button
+                        variant="contained"
+                        onClick={handleNext}
+                        sx={{
+                          mt: 1,
+                          mr: 1,
+                          color: "white",
+                          backgroundColor: "#008080",
+                        }}>
+                        {index === steps.length - 1 ? "Finish" : "Continue"}
+                      </Button>
+                      <Button
+                        variant="contained"
+                        disabled={index === 0}
+                        onClick={handleBack}
+                        sx={{
+                          mt: 1,
+                          mr: 1,
+                          color: "white",
+                          backgroundColor: "#66B2B2",
+                        }}>
+                        Back
+                      </Button>
+                    </div>
+                  </Box>
+                </StepContent>
+              </Step>
+            ))}
+          </Stepper>
+          {activeStep === steps.length && (
+            <Paper square elevation={0} sx={{ p: 3 }}>
+              <Typography>
+                All steps completed - you&apos;re finished
+              </Typography>
+              <Button
+                variant="contained"
+                onClick={handleReset}
+                sx={{
+                  mt: 1,
+                  mr: 1,
+                  color: "white",
+                  backgroundColor: "#008080",
+                }}>
+                Reset
+              </Button>
+            </Paper>
+          )}
+        </Box>
+      </div>
       <NavBar />
       <Footer />
-    </div>
+    </>
   );
 };

@@ -42,7 +42,7 @@ export const Forgot_Pass = () => {
           Reset password
         </Button>
 
-        <a href="/login" className="text-app-Teal mt-5">
+        <a href="/auth/login" className="text-app-Teal mt-5">
           <ArrowBackOutlined /> Back to log in
         </a>
       </form>

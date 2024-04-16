@@ -51,7 +51,9 @@ export const Login = () => {
             </text>
           </div>
 
-          <a href="/forgotPass" className="text-app-Teal font-bold text-sm">
+          <a
+            href="/auth/forgotPass"
+            className="text-app-Teal font-bold text-sm">
             Forgot password?
           </a>
         </div>
@@ -65,7 +67,7 @@ export const Login = () => {
 
         <p className="mt-5 text-app-Teal">
           Don’t have an account?{" "}
-          <a href="/" className="font-bold">
+          <a href="/auth/resetPass" className="font-bold">
             Sign up
           </a>
         </p>

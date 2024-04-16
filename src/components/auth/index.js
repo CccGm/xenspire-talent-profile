@@ -10,11 +10,11 @@ export const Auth = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to="login" replace />} />
+        <Route path="/auth" element={<Navigate to="/auth/login" replace />} />
         <Route path="login" element={<Login />} />
         <Route path="forgotPass" element={<Forgot_Pass />} />
         <Route path="resetPass" element={<Reset_Password />} />
-        <Route path="*" element={<Navigate to="login" replace />} />
+        <Route path="*" element={<Navigate to="/auth/login" replace />} />
       </Routes>
       <NavBar />
       <Footer />

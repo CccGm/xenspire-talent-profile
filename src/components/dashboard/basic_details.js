@@ -32,7 +32,7 @@ export const Basic_Details = () => {
 
   return (
     <div className="mt-24">
-      {activeStep == 3 ? (
+      {activeStep === 3 ? (
         <></>
       ) : (
         <div className="justify-end flex mr-14">
