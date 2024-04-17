@@ -21,14 +21,11 @@ import {
   ListItemIcon,
 } from "@mui/material";
 import { Footer } from "../widgets/footer";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItemText from "@mui/material/ListItemText";
 import logo from "../../assets/images/Logo.png";
 
@@ -64,24 +61,6 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   ...theme.mixins.toolbar,
 }));
 
-const AppBar = styled(MuiAppBar, {
-  shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  zIndex: theme.zIndex.drawer + 1,
-  transition: theme.transitions.create(["width", "margin"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(["width", "margin"], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  }),
-}));
-
 const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
 })(({ theme, open }) => ({
@@ -101,6 +80,51 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export const Selection_Screen = () => {
+  const [open, setOpen] = React.useState(false);
+
+  const handleDrawer = () => {
+    setOpen(!open);
+  };
+
+  const AvatarImg = () => {
+    return (
+      <AvatarGroup
+        max={4}
+        sx={{
+          justifyContent: "left",
+        }}>
+        <Avatar
+          alt="Cindy Baker"
+          src="https://eu.ui-avatars.com/api/?name=Ghelani+Mihir&size=250"
+        />
+        <Avatar
+          alt="Agnes Walker"
+          src="https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=mail@ashallendesign.co.uk"
+        />
+        <Avatar
+          alt="Trevor Henderson"
+          src="https://avatar.iran.liara.run/public/boy?username=Ash"
+        />
+        <Avatar
+          alt="Agnes Walker"
+          src="https://avatar.iran.liara.run/public/boy?username=Ash"
+        />
+        <Avatar
+          alt="Trevor Henderson"
+          src="https://avatar.iran.liara.run/public/boy?username=Ash"
+        />
+        <Avatar
+          alt="Agnes Walker"
+          src="https://avatar.iran.liara.run/public/boy?username=Ash"
+        />
+        <Avatar
+          alt="Trevor Henderson"
+          src="https://avatar.iran.liara.run/public/boy?username=Ash"
+        />
+      </AvatarGroup>
+    );
+  };
+
   const data = [
     {
       clien: "Catalog",
@@ -180,55 +204,6 @@ export const Selection_Screen = () => {
       id: 342,
     },
   ];
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
-  };
-
-  const Avatar_Imgs = () => {
-    return (
-      <AvatarGroup
-        max={4}
-        sx={{
-          justifyContent: "left",
-        }}>
-        <Avatar
-          alt="Cindy Baker"
-          src="https://eu.ui-avatars.com/api/?name=Ghelani+Mihir&size=250"
-        />
-        <Avatar
-          alt="Agnes Walker"
-          src="https://api.dicebear.com/7.x/adventurer-neutral/svg?seed=mail@ashallendesign.co.uk"
-        />
-        <Avatar
-          alt="Trevor Henderson"
-          src="https://avatar.iran.liara.run/public/boy?username=Ash"
-        />
-        <Avatar
-          alt="Agnes Walker"
-          src="https://avatar.iran.liara.run/public/boy?username=Ash"
-        />
-        <Avatar
-          alt="Trevor Henderson"
-          src="https://avatar.iran.liara.run/public/boy?username=Ash"
-        />
-        <Avatar
-          alt="Agnes Walker"
-          src="https://avatar.iran.liara.run/public/boy?username=Ash"
-        />
-        <Avatar
-          alt="Trevor Henderson"
-          src="https://avatar.iran.liara.run/public/boy?username=Ash"
-        />
-      </AvatarGroup>
-    );
-  };
 
   const drawer_Data = [
     { name: "Jobs", icon: <InsertChartOutlinedTwoTone /> },
@@ -239,43 +214,35 @@ export const Selection_Screen = () => {
   return (
     <div className="flex">
       <div>
-        <AppBar
-          position="fixed"
-          open={open}
-          sx={{ backgroundColor: "#B2D8D8" }}>
-          <Toolbar>
-            <IconButton
-              color="inherit"
-              aria-label="open drawer"
-              onClick={handleDrawerOpen}
-              edge="start"
-              sx={{
-                marginRight: 5,
-                ...(open && { display: "none" }),
-              }}>
-              <MenuIcon />
-            </IconButton>
-            <div className="grid grid-flow-col items-center justify-center">
-              <img src={logo} alt="logo" width={60} />
-              <text className="text-app-Teal font-extrabold text-2xl">
-                Xenspire Talent
-              </text>
-            </div>
-          </Toolbar>
-        </AppBar>
         <Drawer variant="permanent" open={open}>
           <DrawerHeader sx={{ backgroundColor: "#B2D8D8" }}>
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon />
-              ) : (
-                <ChevronLeftIcon />
-              )}
+            <IconButton onClick={handleDrawer}>
+              {open ? <ChevronLeftIcon /> : <MenuIcon />}
             </IconButton>
           </DrawerHeader>
           <Divider />
-          <div className="h-full bg-app-LightTeal pt-10">
+          <div className="h-full bg-app-LightTeal ">
             <List>
+              <ListItem
+                sx={{
+                  justifyContent: open ? "initial" : "center",
+                  p: 2.5,
+                }}>
+                <ListItemIcon
+                  sx={{
+                    justifyContent: "center",
+                  }}>
+                  <img src={logo} alt="logo" width={60} />
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Xenspire Talent"}
+                  sx={{ opacity: open ? 1 : 0, color: "#008080", fontSize: 30 }}
+                  primaryTypographyProps={{
+                    fontSize: "21px",
+                    fontWeight: "700",
+                  }}
+                />
+              </ListItem>
               {drawer_Data.map((data, index) => (
                 <ListItemButton
                   key={index}
@@ -307,7 +274,6 @@ export const Selection_Screen = () => {
       </div>
 
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
         <div className="border-app-Teal border rounded-md p-3  grid grid-flow-col justify-between px-10">
           <text className="text-app-Teal font-semibold text-xl">Jobs</text>
           <HelpOutlineOutlined sx={{ color: "#98A2B3" }} />
@@ -342,7 +308,7 @@ export const Selection_Screen = () => {
                     </div>
                   </TableCell>
                   <TableCell align="left">
-                    <Avatar_Imgs />
+                    <AvatarImg />
                   </TableCell>
                   <TableCell sx={{ color: "#344054" }}>{row.id}</TableCell>
                 </TableRow>

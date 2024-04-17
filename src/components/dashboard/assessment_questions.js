@@ -42,6 +42,26 @@ export const Assessment_Questions = () => {
 
   return (
     <div>
+      {/* stepper */}
+      <div className="w-full  items-center fixed  top-24">
+        <div className="flex items-center justify-center pl-36">
+          <text className="text-app-Teal">Q{activeStep} / 20 </text>
+          <MobileStepper
+            variant="progress"
+            steps={21}
+            position="static"
+            activeStep={activeStep}
+            sx={{
+              maxWidth: 400,
+              flexGrow: 1,
+              ".MuiMobileStepper-progress ": {
+                color: "#008080",
+              },
+            }}
+          />
+        </div>
+      </div>
+      {/* button */}
       <div className="justify-end flex mr-14">
         <Button
           variant="contained"
@@ -70,25 +90,6 @@ export const Assessment_Questions = () => {
       </div>
       <div>
         <Show_Fragment />
-      </div>
-      {/* stepper */}
-      <div className="w-full  items-center fixed  top-24">
-        <div className="flex items-center justify-center pl-36">
-          <text className="text-app-Teal">Q{activeStep} / 20 </text>
-          <MobileStepper
-            variant="progress"
-            steps={21}
-            position="static"
-            activeStep={activeStep}
-            sx={{
-              maxWidth: 400,
-              flexGrow: 1,
-              ".MuiMobileStepper-progress ": {
-                color: "#008080",
-              },
-            }}
-          />
-        </div>
       </div>
     </div>
   );
