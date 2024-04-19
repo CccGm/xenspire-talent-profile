@@ -11,7 +11,7 @@ export const DashBoard = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Navigate to="landing" replace />} />
+        <Route path="/" element={<Navigate to="basicdetails" replace />} />
         <Route path="landing" element={<LandingPage />} />
         <Route path="instruction" element={<InstructionPage />} />
         <Route path="basicdetails" element={<Basic_Details />} />

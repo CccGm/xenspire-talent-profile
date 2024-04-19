@@ -17,7 +17,7 @@ export const Basic_Details = () => {
   const Show_Fragment = () => {
     switch (activeStep) {
       case 0:
-        setActiveStep(1);
+        setActiveStep(3);
         break;
       case 1:
         return <Form_Of_Basic_Details />;
@@ -32,6 +32,26 @@ export const Basic_Details = () => {
 
   return (
     <div className="mt-24">
+      {/* stepper */}
+      <div className="w-full items-center fixed  bottom-16">
+        <div className="flex items-center justify-center pl-36">
+          <text className="text-app-Teal">Section {activeStep} / 3 </text>
+          <MobileStepper
+            variant="progress"
+            steps={4}
+            position="static"
+            activeStep={activeStep}
+            sx={{
+              maxWidth: 400,
+              flexGrow: 1,
+              ".MuiMobileStepper-progress ": {
+                color: "#008080",
+              },
+            }}
+          />
+        </div>
+      </div>
+
       {activeStep === 3 ? (
         <></>
       ) : (
@@ -54,25 +74,6 @@ export const Basic_Details = () => {
         <Show_Fragment />
       </div>
 
-      {/* stepper */}
-      <div className="w-full  items-center fixed  bottom-16">
-        <div className="flex items-center justify-center pl-36">
-          <text className="text-app-Teal">Section {activeStep} / 3 </text>
-          <MobileStepper
-            variant="progress"
-            steps={4}
-            position="static"
-            activeStep={activeStep}
-            sx={{
-              maxWidth: 400,
-              flexGrow: 1,
-              ".MuiMobileStepper-progress ": {
-                color: "#008080",
-              },
-            }}
-          />
-        </div>
-      </div>
       <NavBar />
       <Footer />
     </div>
