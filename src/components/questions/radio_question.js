@@ -1,7 +1,10 @@
 import React from "react";
 import { FormControlLabel, Radio, RadioGroup } from "@mui/material";
 
-export const RadioQuestion = ({ ans, changeAns, optionsList }) => {
+export const RadioQuestion = ({ no, ans, changeAns, optionsList }) => {
+  React.useEffect(() => {
+    changeAns(null);
+  }, [no]);
   return (
     <div>
       <RadioGroup

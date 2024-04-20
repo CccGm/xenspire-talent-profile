@@ -1,21 +1,10 @@
 import React from "react";
 import logo from "../../assets/images/Logo.png";
 import { TimerOutlined } from "@mui/icons-material";
+import { useAppContext } from "../../context";
 
-export const NavBar = ({ show, isRunning }) => {
-  const [seconds, setSeconds] = React.useState(0);
-
-  React.useEffect(() => {
-    let intervalId;
-    if (isRunning) {
-      // setSeconds(0);
-      intervalId = setInterval(() => {
-        setSeconds((prevSeconds) => prevSeconds + 1);
-      }, 1000); // Update every 1 second
-    }
-
-    return () => clearInterval(intervalId);
-  }, [isRunning]);
+export const NavBar = ({ show }) => {
+  const { seconds } = useAppContext();
 
   // Convert seconds to HH:MM:SS format
   const formatTime = (seconds) => {
@@ -26,7 +15,6 @@ export const NavBar = ({ show, isRunning }) => {
       secs < 10 ? "0" + secs : secs
     }`;
   };
-
   return (
     <nav className="fixed top-0 w-full p-3 bg-app-LightTeal">
       <div

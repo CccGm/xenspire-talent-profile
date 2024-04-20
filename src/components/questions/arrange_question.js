@@ -45,36 +45,38 @@ function Item({ id, content, index, moveItem }) {
   drag(drop(ref));
 
   return (
-    <div ref={ref} style={{ opacity, padding: 3 }}>
-      <text className="bg-app-LightTeal rounded-md px-3 mr-3 text-app-Teal">
-        {id}
-      </text>
+    <div
+      ref={ref}
+      style={{
+        opacity,
+        padding: 3,
+      }}>
+      <text className=" pr-2 text-app-Teal text-2xl">&#x2022;</text>
       <text>{content}</text>
     </div>
   );
 }
 
-export const ArrangeQuestion = ({ ans, changeAns, optionsList, no }) => {
+export const ArrangeQuestion = ({ changeAns, optionsList, no }) => {
   const [items, setItems] = React.useState([]);
 
   React.useEffect(() => {
     // Fetch data from API
-    const fetchData = async () => {
-      //   let arry = ans === null ? optionsList : ans;
-
-      try {
-        const formattedData = optionsList.map((item, index) => ({
-          id: index + 1,
-          content: item,
-        }));
-        setItems(formattedData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
     fetchData();
+    changeAns(null);
   }, [no]);
+
+  const fetchData = async () => {
+    try {
+      const formattedData = optionsList.map((item, index) => ({
+        id: index + 1,
+        content: item,
+      }));
+      setItems(formattedData);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const moveItem = (dragIndex, hoverIndex) => {
     const dragItem = items[dragIndex];
@@ -82,11 +84,15 @@ export const ArrangeQuestion = ({ ans, changeAns, optionsList, no }) => {
     newItems.splice(dragIndex, 1);
     newItems.splice(hoverIndex, 0, dragItem);
     setItems(newItems);
-    saveData(newItems);
+    saveData();
   };
 
-  const saveData = (newItems) => {
-    const newArray = newItems.map((item) => item.content);
+  const saveData = () => {
+    if (items.length === 0) {
+      changeAns(optionsList);
+      return;
+    }
+    const newArray = items.map((item) => item.content);
     changeAns(newArray);
   };
 

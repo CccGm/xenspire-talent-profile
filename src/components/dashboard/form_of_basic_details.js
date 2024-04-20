@@ -1,15 +1,35 @@
 import React from "react";
 import { Box, Chip, FormLabel, MenuItem, Select } from "@mui/material";
+import axios from "axios";
 
 export const Form_Of_Basic_Details = () => {
   const [member, setMember] = React.useState("");
   const [industry, setIndustry] = React.useState([]);
-  const [skill1, setSkill1] = React.useState({ name: "", skill: "" });
-  const [skill2, setSkill2] = React.useState({ name: "", skill: "" });
-
+  const [skill, setSkill] = React.useState({ name: "", skill: "" });
   const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const company = ["IT", "Computer", "Banking", "AI", "Business", "Automation"];
-  const skill = ["sport", "work", "nodejs", "another", "react"];
+  const skills = ["sport", "work", "nodejs", "another", "react"];
+
+  const saveApiData = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/saveQuestion/",
+        {
+          member,
+          industry,
+          skill,
+        }
+      );
+
+      if (response.status === 200) {
+        console.log("save data succesfully");
+      } else {
+        console.log("save data not save");
+      }
+    } catch (error) {
+      console.log("save data not save", error);
+    }
+  };
 
   return (
     <div className="mx-40 mb-24">
@@ -100,8 +120,8 @@ export const Form_Of_Basic_Details = () => {
         <text style={{ color: "#008080" }}>What are the Skillset Needed?</text>
         <div className="mt-4 grid grid-flow-col justify-between items-center">
           <input
-            value={skill1.name}
-            onChange={(e) => setSkill1({ ...skill1, name: e.target.value })}
+            value={skill.name}
+            onChange={(e) => setSkill({ ...skill, name: e.target.value })}
             placeholder="Skill Name 1"
             style={{
               width: 384,
@@ -114,8 +134,8 @@ export const Form_Of_Basic_Details = () => {
           <Select
             size="small"
             displayEmpty
-            value={skill1.skill}
-            onChange={(e) => setSkill1({ ...skill1, skill: e.target.value })}
+            value={skill.skill}
+            onChange={(e) => setSkill({ ...skill, skill: e.target.value })}
             renderValue={(selected) => {
               if (selected.length === 0) {
                 return <text style={{ color: "#667085" }}>Select Skill</text>;
@@ -123,39 +143,7 @@ export const Form_Of_Basic_Details = () => {
               return selected;
             }}
             className="w-96">
-            {skill.map((name) => (
-              <MenuItem key={name} value={name}>
-                {name}
-              </MenuItem>
-            ))}
-          </Select>
-        </div>
-        <div className="mt-4 grid grid-flow-col justify-between items-center">
-          <input
-            value={skill2.name}
-            onChange={(e) => setSkill2({ ...skill2, name: e.target.value })}
-            placeholder="Skill Name 2"
-            style={{
-              width: 384,
-              borderWidth: 1,
-              borderColor: "#A7AAAF",
-              borderRadius: 4,
-              padding: 8,
-            }}
-          />
-          <Select
-            size="small"
-            displayEmpty
-            value={skill2.skill}
-            onChange={(e) => setSkill2({ ...skill2, skill: e.target.value })}
-            renderValue={(selected) => {
-              if (selected.length === 0) {
-                return <text style={{ color: "#667085" }}>Select Skill</text>;
-              }
-              return selected;
-            }}
-            className="w-96">
-            {skill.map((name) => (
+            {skills.map((name) => (
               <MenuItem key={name} value={name}>
                 {name}
               </MenuItem>

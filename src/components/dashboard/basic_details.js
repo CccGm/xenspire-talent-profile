@@ -9,19 +9,9 @@ import { Footer } from "../widgets/footer";
 
 export const Basic_Details = () => {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [isRunning, setIsRunning] = React.useState(false);
 
   const handleNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
-
-  React.useEffect(() => {
-    handleTimer();
-    return handleTimer();
-  }, []);
-
-  const handleTimer = () => {
-    setIsRunning(!isRunning);
   };
 
   const Show_Fragment = () => {
@@ -84,7 +74,7 @@ export const Basic_Details = () => {
         <Show_Fragment />
       </div>
 
-      <NavBar isRunning={isRunning} />
+      <NavBar />
       <Footer />
     </div>
   );
