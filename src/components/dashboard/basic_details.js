@@ -14,7 +14,7 @@ export const Basic_Details = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
-  const Show_Fragment = () => {
+  const ShowFragment = () => {
     switch (activeStep) {
       case 0:
         setActiveStep(1);
@@ -71,7 +71,7 @@ export const Basic_Details = () => {
       )}
 
       <div>
-        <Show_Fragment />
+        <ShowFragment />
       </div>
 
       <NavBar />

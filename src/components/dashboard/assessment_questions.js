@@ -7,7 +7,8 @@ import { useAppContext } from "../../context";
 
 export const Assessment_Questions = ({}) => {
   const [activeStep, setActiveStep] = React.useState(0);
-  const { qustions, setQuestions, timeStart, timeStop } = useAppContext();
+  const { qustions, setQuestions, timeStart, timeStop, seconds } =
+    useAppContext();
 
   const navigate = useNavigate();
 
@@ -32,6 +33,7 @@ export const Assessment_Questions = ({}) => {
         "http://localhost:3000/api/saveQuestion/",
         {
           qustions,
+          seconds,
         }
       );
 
