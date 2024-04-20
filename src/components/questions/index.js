@@ -1,9 +1,10 @@
 import React from "react";
 import { RadioQuestion } from "./radio_question";
 import { Button } from "@mui/material";
+import { ArrangeQuestion } from "./arrange_question";
 
 export const Question = ({ qustion, save }) => {
-  const [radio, setRadio] = React.useState(qustion.selectedOption);
+  const [answer, setAnswer] = React.useState(qustion.selectedOption);
 
   return (
     <div className="mt-10 mx-24">
@@ -14,15 +15,24 @@ export const Question = ({ qustion, save }) => {
         <text className="text-app-Teal ">• {qustion.question}</text>
       </div>
       <div className="my-10 ">
-        <RadioQuestion
-          ans={radio}
-          changeAns={setRadio}
-          optionsList={qustion.optionsList}
-        />
+        {qustion.questionOptionType.toLocaleUpperCase() === "RANKING" ? (
+          <ArrangeQuestion
+            ans={answer}
+            changeAns={setAnswer}
+            optionsList={qustion.optionsList}
+            no={qustion.questionnaireNo}
+          />
+        ) : (
+          <RadioQuestion
+            ans={answer}
+            changeAns={setAnswer}
+            optionsList={qustion.optionsList}
+          />
+        )}
       </div>
       <div className="justify-end flex mb-28">
         <Button
-          onClick={() => save(radio)}
+          onClick={() => save(answer)}
           variant="outlined"
           style={{
             color: "#ffffff",

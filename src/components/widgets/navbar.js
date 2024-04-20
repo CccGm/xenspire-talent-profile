@@ -2,7 +2,31 @@ import React from "react";
 import logo from "../../assets/images/Logo.png";
 import { TimerOutlined } from "@mui/icons-material";
 
-export const NavBar = ({ show }) => {
+export const NavBar = ({ show, isRunning }) => {
+  const [seconds, setSeconds] = React.useState(0);
+
+  React.useEffect(() => {
+    let intervalId;
+    if (isRunning) {
+      // setSeconds(0);
+      intervalId = setInterval(() => {
+        setSeconds((prevSeconds) => prevSeconds + 1);
+      }, 1000); // Update every 1 second
+    }
+
+    return () => clearInterval(intervalId);
+  }, [isRunning]);
+
+  // Convert seconds to HH:MM:SS format
+  const formatTime = (seconds) => {
+    const hrs = Math.floor(seconds / 3600);
+    const mins = Math.floor((seconds % 3600) / 60);
+    const secs = Math.floor(seconds % 60);
+    return `${hrs < 10 ? "0" + hrs : hrs}:${mins < 10 ? "0" + mins : mins}:${
+      secs < 10 ? "0" + secs : secs
+    }`;
+  };
+
   return (
     <nav className="fixed top-0 w-full p-3 bg-app-LightTeal">
       <div
@@ -16,7 +40,9 @@ export const NavBar = ({ show }) => {
         {!show ? (
           <div className="grid grid-flow-col" style={{ color: "#008080" }}>
             <TimerOutlined />
-            <text className="mr-10 ml-2 text-app-Teal">15 mins</text>
+            <text className="mr-10 ml-2 text-app-Teal">
+              {formatTime(seconds)}
+            </text>
           </div>
         ) : (
           <></>

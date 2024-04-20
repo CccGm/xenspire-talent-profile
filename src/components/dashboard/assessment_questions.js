@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Question } from "../questions";
 import { QUESTIONS } from "../questions/qustions.data";
 
-export const Assessment_Questions = () => {
+export const Assessment_Questions = ({}) => {
   const [activeStep, setActiveStep] = React.useState(0);
   const [qustions, setQuestions] = React.useState(QUESTIONS);
 
@@ -12,6 +12,7 @@ export const Assessment_Questions = () => {
 
   const handleNext = () => {
     if (activeStep === 19) {
+      setActiveStep((prevActiveStep) => prevActiveStep + 1);
       navigate("/report");
     } else {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -21,14 +22,12 @@ export const Assessment_Questions = () => {
   const handleSaveQuestion = (ans) => {
     const updatedQuestions = [...qustions];
     updatedQuestions[activeStep].selectedOption = ans;
-    if (
-      qustions[activeStep].questionOptionType.toLocaleUpperCase() === "RANKING"
-    ) {
-      console.log("ranking");
-      setQuestions(updatedQuestions);
-    } else {
-      setQuestions(updatedQuestions);
-    }
+    // if (
+    //   qustions[activeStep].questionOptionType.toLocaleUpperCase() === "RANKING"
+    // ) {
+    //   updatedQuestions[activeStep].selectedOrder = ans;
+    // }
+    setQuestions(updatedQuestions);
   };
 
   const handleBack = () => {
