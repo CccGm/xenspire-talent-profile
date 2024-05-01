@@ -8,6 +8,7 @@ module.exports = {
       app: {
         Border: "#66B2B2",
         Teal: "#008080",
+        Teal800: "#125D56",
         LightTeal: "#B2D8D8",
         offWhite: "#E9D7FE",
         text: "#344054",
