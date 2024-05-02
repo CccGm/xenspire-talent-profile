@@ -2,6 +2,7 @@ import React from "react";
 import {
   Autocomplete,
   Chip,
+  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -17,7 +18,7 @@ import {
   PersonAddAltOutlined,
   SearchOutlined,
 } from "@mui/icons-material";
-import { Dummy_Benifits } from "../../utils/dummy";
+import { Dummy_Benifits } from "../../../utils/dummy";
 
 export const CandidateScreen = () => {
   const [array, serArray] = React.useState(Dummy_Benifits);
@@ -112,6 +113,8 @@ export const CandidateScreen = () => {
               color: "#ffffff",
               fontSize: 20,
             }}
+            onClick={() => console.log("Create click")}
+            clickable
           />
         </div>
       </div>
@@ -122,7 +125,6 @@ export const CandidateScreen = () => {
           <StyledTableHead>
             <TableRow>
               <TableCell
-                a
                 style={{ fontWeight: "bold", color: "#125D56", width: 300 }}>
                 Candidate Name
               </TableCell>
@@ -144,16 +146,23 @@ export const CandidateScreen = () => {
           <TableBody>
             {array.map((row, index) => (
               <StyledTableRow key={index}>
-                <TableCell a>{row.name}</TableCell>
+                <TableCell>{row.name}</TableCell>
                 <TableCell>
                   <RenderStatus data={row.status} />
                 </TableCell>
                 <TableCell>{row.email}</TableCell>
                 <TableCell align="center">
-                  <Chip label="View Report" />
+                  <Chip
+                    label="View Report"
+                    onClick={() => console.log("View report click" + row)}
+                    clickable
+                  />
                 </TableCell>
-                <TableCell>
-                  <EmailOutlined />
+                <TableCell align="center">
+                  <IconButton
+                    onClick={() => console.log("email click :" + row.email)}>
+                    <EmailOutlined />
+                  </IconButton>
                 </TableCell>
               </StyledTableRow>
             ))}

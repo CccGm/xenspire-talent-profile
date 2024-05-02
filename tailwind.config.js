@@ -12,6 +12,8 @@ module.exports = {
         LightTeal: "#B2D8D8",
         offWhite: "#E9D7FE",
         text: "#344054",
+        border: "#EAECF0",
+        gray900: "#101828",
       },
     },
   },
