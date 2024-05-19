@@ -85,14 +85,14 @@ export const SideNavAdmin = ({ setUser, email }) => {
 
   const drawer_Data = [
     { name: "Jobs", icon: home, path: "/home" },
-    { name: "Candidates", icon: profile, path: "/Candidate" },
-    { name: "Clients", icon: time, path: "/CandidateProfile" },
+    { name: "Candidates", icon: profile, path: "/candidate" },
+    { name: "Clients", icon: time, path: "/client" },
   ];
 
   const drawer_Data_new = [
     { name: "Jobs", icon: home, path: "/home" },
-    { name: "Candidates", icon: profile, path: "/Candidate" },
-    { name: "Clients", icon: time, path: "/CandidateProfile" },
+    { name: "Candidates", icon: profile, path: "/candidate" },
+    { name: "Clients", icon: time, path: "/client" },
   ];
 
   React.useEffect(() => {

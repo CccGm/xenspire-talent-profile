@@ -2,7 +2,6 @@ import React from "react";
 import {
   Autocomplete,
   Chip,
-  IconButton,
   Table,
   TableBody,
   TableCell,
@@ -12,18 +11,13 @@ import {
   TextField,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import {
-  EmailOutlined,
-  FiberManualRecord,
-  PersonAddAltOutlined,
-  SearchOutlined,
-} from "@mui/icons-material";
+import { PersonAddAltOutlined, SearchOutlined } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Dummy_Benifits } from "../../../utils/dummy";
 import { Dialoge_Add_User } from "../../common/dialog";
 
-export const CandidateScreen = () => {
+export const ClientScreen = () => {
   const [array, serArray] = React.useState(Dummy_Benifits);
   const [search, setSearch] = React.useState("");
   const [dialogeOpen, setDealogeOpen] = React.useState(false);
@@ -56,30 +50,6 @@ export const CandidateScreen = () => {
     }
   `;
 
-  const RenderStatus = ({ data }) => {
-    let colorCode = "";
-    let BgColorCode = "";
-    if (data === "Actively Looking") {
-      colorCode = "success";
-      BgColorCode = "#ECFDF3";
-    } else if (data === "Open for work") {
-      colorCode = "warning";
-      BgColorCode = "#FFFAEB";
-    } else if (data === "Not looking for job") {
-      colorCode = "error";
-      BgColorCode = "#FEF3F2";
-    }
-    return (
-      <Chip
-        icon={<FiberManualRecord fontSize="10" />}
-        label={data}
-        color={colorCode}
-        variant="outlined"
-        style={{ backgroundColor: BgColorCode }}
-      />
-    );
-  };
-
   const handleDialogeClose = () => {
     setDealogeOpen(false);
   };
@@ -88,19 +58,19 @@ export const CandidateScreen = () => {
     console.log(name, email);
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/addcandidate/",
+        "http://localhost:3000/api/addclient/",
         {
           name,
           email,
         }
       );
       if (response.status === 200) {
-        console.log("create candidate succesfully");
+        console.log("create client succesfully");
       } else {
-        console.log(" candidate not created");
+        console.log(" client not created");
       }
     } catch (error) {
-      console.log(" candidate not created", error);
+      console.log(" clients not created", error);
     }
   };
 
@@ -116,7 +86,7 @@ export const CandidateScreen = () => {
           renderInput={(params) => (
             <TextField
               {...params}
-              placeholder="Search Candidate"
+              placeholder="Search Client"
               InputProps={{
                 ...params.InputProps,
                 startAdornment: <SearchOutlined />,
@@ -156,21 +126,18 @@ export const CandidateScreen = () => {
             <TableRow>
               <TableCell
                 style={{ fontWeight: "bold", color: "#125D56", width: 300 }}>
-                Candidate Name
+                Company Name
               </TableCell>
               <TableCell style={{ fontWeight: "bold", color: "#125D56" }}>
-                Status
+                Hiring Manger Email
               </TableCell>
               <TableCell style={{ fontWeight: "bold", color: "#125D56" }}>
-                Candidate Email
+                Open Jobs
               </TableCell>
               <TableCell
                 align="center"
-                style={{ fontWeight: "bold", color: "#125D56" }}>
-                Report
-              </TableCell>
-              <TableCell
-                style={{ fontWeight: "bold", color: "#125D56" }}></TableCell>
+                style={{ fontWeight: "bold", color: "#125D56" }}
+              />
             </TableRow>
           </StyledTableHead>
           <TableBody>
@@ -178,27 +145,23 @@ export const CandidateScreen = () => {
               <StyledTableRow
                 key={index}
                 className="hover:bg-app-offWhite hover:cursor-pointer">
-                <TableCell onClick={() => navigation("/candidateProfile")}>
+                <TableCell onClick={() => navigation("/clientProfile")}>
                   {row.name}
                 </TableCell>
-                <TableCell onClick={() => navigation("/candidateProfile")}>
-                  <RenderStatus data={row.status} />
-                </TableCell>
-                <TableCell onClick={() => navigation("/candidateProfile")}>
+                <TableCell onClick={() => navigation("/clientProfile")}>
                   {row.email}
+                </TableCell>
+                <TableCell onClick={() => navigation("/clientProfile")}>
+                  <p className="border w-fit py-1 px-3 rounded-full">
+                    {row.openJobs}
+                  </p>
                 </TableCell>
                 <TableCell align="center">
                   <Chip
-                    label="View Report"
-                    onClick={() => console.log("View report click" + row)}
+                    label="View Jobs"
+                    onClick={() => console.log("View jobs click" + row)}
                     clickable
                   />
-                </TableCell>
-                <TableCell align="center">
-                  <IconButton
-                    onClick={() => console.log("email click :" + row.email)}>
-                    <EmailOutlined />
-                  </IconButton>
                 </TableCell>
               </StyledTableRow>
             ))}

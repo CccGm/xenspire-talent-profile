@@ -1,12 +1,9 @@
 import React from "react";
-import { Avatar, Badge, Button, Divider } from "@mui/material";
+import { Avatar, Badge, Button } from "@mui/material";
 import { MoreHoriz, Verified } from "@mui/icons-material";
-import assessment from "../../../assets/images/assesment.png";
-import values from "../../../assets/images/Values.png";
-import prefrences from "../../../assets/images/Prefrances.png";
-import avtar from "../../../assets/images/Avatar.png";
+import logo from "../../../assets/images/Logo.png";
 
-export const CandidateProfileScreen = () => {
+export const ClientProfileScreen = () => {
   return (
     <div className="mb-20 w-full">
       <>
@@ -23,7 +20,7 @@ export const CandidateProfileScreen = () => {
               badgeContent={<Verified color="primary" />}>
               <Avatar
                 alt="Remy Sharp"
-                src={avtar}
+                src={logo}
                 sx={{ width: 100, height: 100, padding: 0.4, bgcolor: "white" }}
               />
             </Badge>
@@ -36,7 +33,7 @@ export const CandidateProfileScreen = () => {
                   fontWeight: "bold",
                   fontSize: 26,
                 }}>
-                Amélie Laurent
+                Xenspire Group
               </text>
               <p style={{ color: "#008080" }}>
                 I'm a Product Designer based in Melbourne.
@@ -65,7 +62,7 @@ export const CandidateProfileScreen = () => {
 
       <div className="px-8 mt-5">
         <text style={{ color: "#101828", fontWeight: "bold", fontSize: 20 }}>
-          Experiance
+          Company Headline
         </text>
         <p style={{ color: "#008080" }}>
           I specialise in UX/UI design, brand strategy, and Webflow development.
@@ -74,7 +71,7 @@ export const CandidateProfileScreen = () => {
       <div className="px-8 mt-5 grid grid-cols-2">
         <div>
           <text style={{ color: "#101828", fontWeight: "bold", fontSize: 20 }}>
-            About me
+            About Company
           </text>
           <p style={{ color: "#008080" }}>
             I'm a Product Designer based in Melbourne, Australia. I enjoy
@@ -94,74 +91,43 @@ export const CandidateProfileScreen = () => {
         <div className="px-14 py-5 grid grid-cols-2 gap-5">
           <div className="grid grid-flow-row ">
             <text style={{ color: "#008080", fontWeight: "500" }}>
-              Location
+              Hiring Manager
             </text>
-            <text>Melonu us</text>
-          </div>
-          <div className="grid grid-flow-row ">
-            <text style={{ color: "#008080", fontWeight: "500" }}>Email</text>
-            <text style={{ color: "#6941C6" }}>abc@gmail.com</text>
+            <text style={{ color: "#6941C6" }}>nilesh Khartad</text>
           </div>
           <div className="grid grid-flow-row ">
             <text style={{ color: "#008080", fontWeight: "500" }}>
-              Job stastus
+              Location
             </text>
-            <text style={{ color: "#6941C6" }}>Actively searching</text>
+            <text>Boston, US</text>
           </div>
+          <div className="grid grid-flow-row gap-1">
+            <text style={{ color: "#008080", fontWeight: "500" }}>
+              Hiring Manager Email
+            </text>
+            <text style={{ color: "#6941C6" }}>abc@gmail.com</text>
+          </div>
+
           <div className="grid grid-flow-row ">
             <text style={{ color: "#008080", fontWeight: "500" }}>Phone</text>
             <text style={{ color: "#6941C6" }}>123456789</text>
           </div>
         </div>
       </div>
-      <div className="px-8 grid grid-flow-col mt-5">
-        <div className="border-app-border border mx-16 rounded-lg">
-          <div className="grid grid-flow-col justify-center  py-3 ">
-            <img src={prefrences} alt="performance" width={80} />
-            <div className="grid grid-flow-row pl-3">
-              <text style={{ color: "#101828", fontWeight: 500 }}>
-                Preferences
-              </text>
-              <text style={{ color: "#669F2A" }}>Completed</text>
-            </div>
+      <div className="px-8 mt-5">
+        <p>Jobs Posted</p>
+        <div className="grid grid-flow-col mt-5 px-8">
+          <div>
+            <p className="font-semibold">Job name 1</p>
+            <p style={{ color: "#335015" }}>Open</p>
           </div>
-          <Divider />
-          <div className="p-3 flex justify-end">
-            <text style={{ fontSize: 16, fontWeight: 500, color: "#6941C6" }}>
-              Know More
-            </text>
+          <div>
+            <p className="font-semibold">Job name 1</p>
+            <p style={{ color: "#335015" }}>Open</p>
           </div>
-        </div>
-        <div className="border-app-border border mx-16 rounded-lg">
-          <div className="grid grid-flow-col justify-center  py-3 ">
-            <img src={values} alt="performance" width={80} />
-            <div className="grid grid-flow-row pl-3">
-              <text style={{ color: "#101828", fontWeight: 500 }}>Values</text>
-              <text style={{ color: "#F79009" }}>In Progress</text>
-            </div>
-          </div>
-          <Divider />
-          <div className="p-3 flex justify-end">
-            <text style={{ fontSize: 16, fontWeight: 500, color: "#6941C6" }}>
-              Know More
-            </text>
-          </div>
-        </div>
-        <div className="border-app-border border mx-16 rounded-lg">
-          <div className="grid grid-flow-col justify-center  py-3 ">
-            <img src={assessment} alt="performance" width={80} />
-            <div className="grid grid-flow-row pl-3 ">
-              <text style={{ color: "#101828", fontWeight: 500 }}>
-                Persona Builder
-              </text>
-              <text style={{ color: "#F04438" }}>Not yet started</text>
-            </div>
-          </div>
-          <Divider />
-          <div className="p-2 flex justify-end">
-            <text style={{ fontSize: 16, fontWeight: 500, color: "#6941C6" }}>
-              Know More
-            </text>
+          <div>
+            <p className="font-semibold">Job name 1</p>
+            <p style={{ color: "#B42318" }}>Failed</p>
           </div>
         </div>
       </div>

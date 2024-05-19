@@ -4,7 +4,9 @@ import { ContextProvider } from "../../context";
 import { HomeScreen } from "./homeScreen";
 import { SideNavAdmin } from "../widgets/sidenavAdmin";
 import { CandidateScreen } from "./candidate/candidateScreen";
-import { ProfileScreen } from "./candidate/profileScreen";
+import { CandidateProfileScreen } from "./candidate/profileScreen";
+import { ClientScreen } from "./client/clientScreen";
+import { ClientProfileScreen } from "./client/profileScreen";
 
 export const Admin = () => {
   return (
@@ -15,8 +17,13 @@ export const Admin = () => {
           <Routes>
             <Route path="/" element={<Navigate to="home" replace />} />
             <Route path="home" element={<HomeScreen />} />
-            <Route path="Candidate" element={<CandidateScreen />} />
-            <Route path="CandidateProfile" element={<ProfileScreen />} />
+            <Route path="candidate" element={<CandidateScreen />} />
+            <Route
+              path="candidateProfile"
+              element={<CandidateProfileScreen />}
+            />
+            <Route path="client" element={<ClientScreen />} />
+            <Route path="clientProfile" element={<ClientProfileScreen />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </ContextProvider>
