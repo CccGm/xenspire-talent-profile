@@ -8,9 +8,9 @@ import { Candidate } from "./components/candidate";
 function App() {
   return (
     <BrowserRouter>
-      {/* <Auth /> */}
+      <Auth />
       {/* <DashBoard /> */}
-      <Candidate />
+      {/* <Candidate /> */}
       {/* <Admin /> */}
     </BrowserRouter>
   );
