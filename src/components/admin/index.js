@@ -7,6 +7,8 @@ import { CandidateScreen } from "./candidate/candidateScreen";
 import { CandidateProfileScreen } from "./candidate/profileScreen";
 import { ClientScreen } from "./client/clientScreen";
 import { ClientProfileScreen } from "./client/profileScreen";
+import { CandidateReport } from "./candidate/candidateReport";
+import { ClientReport } from "./client/clientReport";
 
 export const Admin = () => {
   return (
@@ -22,8 +24,10 @@ export const Admin = () => {
               path="candidateProfile"
               element={<CandidateProfileScreen />}
             />
+            <Route path="candidateReport" element={<CandidateReport />} />
             <Route path="client" element={<ClientScreen />} />
             <Route path="clientProfile" element={<ClientProfileScreen />} />
+            <Route path="clientReport" element={<ClientReport />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </ContextProvider>
