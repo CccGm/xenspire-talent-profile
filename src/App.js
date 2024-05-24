@@ -3,14 +3,14 @@ import "./App.css";
 import { Auth } from "./components/auth";
 import { DashBoard } from "./components/dashboard";
 import { Admin } from "./components/admin";
-import { Candidate } from "./components/candidate";
+import { MainDashboard } from "./components/maindashboard";
 
 function App() {
   return (
     <BrowserRouter>
-      <Auth />
+      {/* <Auth /> */}
       {/* <DashBoard /> */}
-      {/* <Candidate /> */}
+      <MainDashboard />
       {/* <Admin /> */}
     </BrowserRouter>
   );

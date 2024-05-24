@@ -1,6 +1,7 @@
 import { Button, FormLabel, MenuItem, Select, TextField } from "@mui/material";
 import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import {
   currancys,
   envonments,
@@ -14,6 +15,7 @@ import {
 } from "./Drop_Data";
 
 export const FormThree = ({ back }) => {
+  const navigate = useNavigate();
   const [environment, setEnvironment] = React.useState("");
   const [companyOutlook, setCompanyOutlook] = React.useState("");
   const [stakeholder, setStakeholder] = React.useState("");
@@ -59,6 +61,7 @@ export const FormThree = ({ back }) => {
     } catch (error) {
       console.log("save data not save", error);
     }
+    navigate("/candidatequestion");
   };
 
   let handleChange = (i, e) => {

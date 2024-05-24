@@ -9,8 +9,7 @@ export const RadioQuestion = ({ no, ans, changeAns, optionsList }) => {
     <div>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
-        defaultValue="first"
-        value={ans}
+        value={ans || ""}
         onChange={(e) => {
           changeAns(e.target.value);
         }}

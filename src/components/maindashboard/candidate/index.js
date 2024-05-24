@@ -1,11 +1,13 @@
 import React from "react";
-import { NavBar } from "../widgets/navbar";
-import { Footer } from "../widgets/footer";
+import { useNavigate } from "react-router-dom";
+import { NavBar } from "../../widgets/navbar";
+import { Footer } from "../../widgets/footer";
 import { FormOne } from "./formOne";
 import { FormTwo } from "./formTwo";
 import { FormThree } from "./formThree";
 
-export const Basic_Details = () => {
+export const Candidate = () => {
+  const navigate = useNavigate();
   const [activeStep, setActiveStep] = React.useState(0);
 
   const handleNext = () => {

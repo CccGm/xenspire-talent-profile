@@ -1,10 +1,16 @@
-import React from "react";
-import { RadioQuestion } from "./radio_question";
+import React, { useEffect } from "react";
 import { Button } from "@mui/material";
+import { RadioQuestion } from "./radio_question";
 import { ArrangeQuestion } from "./arrange_question";
 
 export const Question = ({ qustion, save, next, back }) => {
   const [answer, setAnswer] = React.useState(null);
+
+  useEffect(() => {
+    if (qustion?.selectedOption !== null) {
+      setAnswer(qustion?.selectedOption);
+    }
+  }, [qustion]);
 
   return (
     <div>
@@ -41,25 +47,25 @@ export const Question = ({ qustion, save, next, back }) => {
       </div>
       <div className="mt-10 mx-24">
         <text className="text-app-Teal font-bold text-2xl">
-          Question : {qustion.questionnaireNo}
+          Question : {qustion.questionNo}
         </text>
         <div className="grid grid-flow-row gap-2 mt-8">
           <text className="text-app-Teal ">• {qustion.question}</text>
         </div>
         {qustion ? (
           <div className="my-10 ">
-            {qustion.questionOptionType.toLocaleUpperCase() === "RANKING" ? (
+            {qustion?.questionType?.toLocaleUpperCase() === "RANKING" ? (
               <ArrangeQuestion
                 changeAns={setAnswer}
-                optionsList={qustion.optionsList}
-                no={qustion.questionnaireNo}
+                optionsList={qustion.options}
+                no={qustion.questionNo}
               />
             ) : (
               <RadioQuestion
                 ans={answer}
                 changeAns={setAnswer}
-                optionsList={qustion.optionsList}
-                no={qustion.questionnaireNo}
+                optionsList={qustion.options}
+                no={qustion.questionNo}
               />
             )}
           </div>
