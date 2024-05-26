@@ -1,0 +1,15 @@
+export const Questions = [
+  { question: "question 1 is heare", id: 1 },
+  { question: "question 2 is heare", id: 2 },
+  { question: "question 3 is heare", id: 3 },
+  { question: "question 4 is heare", id: 4 },
+  { question: "question 5 is heare", id: 5 },
+  { question: "question 6 is heare", id: 6 },
+  { question: "question 7 is heare", id: 7 },
+  { question: "question 8 is heare", id: 8 },
+  { question: "question 9 is heare", id: 9 },
+  { question: "question 10 is heare", id: 10 },
+  { question: "question 11 is heare", id: 11 },
+  { question: "question 12 is heare", id: 12 },
+  { question: "question 13 is heare", id: 13 },
+];

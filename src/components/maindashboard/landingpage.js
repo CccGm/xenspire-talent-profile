@@ -24,7 +24,7 @@ export const LandingPage = () => {
     if (radio === "client") {
       navigate("/client");
     } else if (radio === "candidate") {
-      navigate("/candidate");
+      navigate("/aboutassigment");
     }
   };
 

@@ -14,6 +14,8 @@ module.exports = {
         text: "#344054",
         border: "#EAECF0",
         gray900: "#101828",
+        lightBlue: "#f1f5f9",
+        tableBorder: "#CFCFCF",
       },
     },
   },

@@ -10,8 +10,8 @@ function App() {
     <BrowserRouter>
       {/* <Auth /> */}
       {/* <DashBoard /> */}
-      {/* <MainDashboard /> */}
-      <Admin />
+      <MainDashboard />
+      {/* <Admin /> */}
     </BrowserRouter>
   );
 }

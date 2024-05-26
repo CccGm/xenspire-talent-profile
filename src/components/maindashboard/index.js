@@ -6,6 +6,8 @@ import { LandingPage } from "./landingpage";
 import { Client } from "./client";
 import { CandidateQuestions } from "./candidate/question";
 import { ClientQuestions } from "./client/question";
+import { AboutAssigment } from "./candidate/aboutAssigment";
+import { PersonalityBuilder } from "./candidate/personalityBuilder";
 
 export const MainDashboard = () => {
   return (
@@ -14,7 +16,9 @@ export const MainDashboard = () => {
         <Routes>
           <Route path="/" element={<Navigate to="landing" replace />} />
           <Route path="landing" element={<LandingPage />} />
+          <Route path="aboutassigment" element={<AboutAssigment />} />
           <Route path="candidate" element={<Candidate />} />
+          <Route path="personalitybuilder" element={<PersonalityBuilder />} />
           <Route path="candidatequestion" element={<CandidateQuestions />} />
           <Route path="client" element={<Client />} />
           <Route path="clientquestion" element={<ClientQuestions />} />

@@ -61,7 +61,7 @@ export const FormThree = ({ back }) => {
     } catch (error) {
       console.log("save data not save", error);
     }
-    navigate("/candidatequestion");
+    navigate("/aboutassigment");
   };
 
   let handleChange = (i, e) => {
