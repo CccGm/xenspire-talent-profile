@@ -28,13 +28,13 @@ export const FormThree = ({ back }) => {
     rate: "",
   });
   const [visaStatus, setVisaStatus] = React.useState("");
-  const [experience, setExperience] = React.useState([
+  const [experienceThree, setExperienceThree] = React.useState([
     {
       level: "",
       industry: "",
     },
   ]);
-  const [updatedSkilles, setUpdatedSkills] = React.useState([]);
+  const [updatedSkillesThree, setUpdatedSkillsThree] = React.useState([]);
 
   const saveApiData = async () => {
     try {
@@ -49,7 +49,7 @@ export const FormThree = ({ back }) => {
           teamHandling,
           expectedCompensation,
           visaStatus,
-          experience,
+          experienceThree,
         }
       );
 
@@ -64,30 +64,30 @@ export const FormThree = ({ back }) => {
     navigate("/aboutassigment");
   };
 
-  let handleChange = (i, e) => {
-    let newFormValues = [...experience];
+  let handleChangeThree = (i, e) => {
+    let newFormValues = [...experienceThree];
     newFormValues[i][e.target.name] = e.target.value;
 
-    setExperience(newFormValues);
+    setExperienceThree(newFormValues);
   };
 
-  let addSkillFields = () => {
-    setExperience([...experience, { level: "", industry: "" }]);
+  let addSkillFieldsThree = () => {
+    setExperienceThree([...experienceThree, { level: "", industry: "" }]);
   };
 
-  let removeSkillFields = (i) => {
-    let newFormValues = [...experience];
+  let removeSkillFieldsThree = (i) => {
+    let newFormValues = [...experienceThree];
     newFormValues.splice(i, 1);
-    setExperience(newFormValues);
+    setExperienceThree(newFormValues);
   };
 
   React.useEffect(() => {
     let add = skills;
-    experience.map((value) => {
+    experienceThree.map((value) => {
       add = add.filter((skil) => skil !== value.industry);
     });
-    setUpdatedSkills(add);
-  }, [experience.length]);
+    setUpdatedSkillsThree(add);
+  }, [experienceThree.length]);
 
   return (
     <div className="mx-40 mb-24">
@@ -300,7 +300,7 @@ export const FormThree = ({ back }) => {
           </text>
         </div>
         <div>
-          {experience.map((element, index) => (
+          {experienceThree.map((element, index) => (
             <div className="grid grid-flow-row">
               <div className="mt-4 grid grid-flow-col justify-between items-center gap-3">
                 <Select
@@ -308,7 +308,7 @@ export const FormThree = ({ back }) => {
                   size="small"
                   displayEmpty
                   value={element.industry}
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) => handleChangeThree(index, e)}
                   renderValue={(selected) => {
                     if (!selected) {
                       return (
@@ -320,7 +320,7 @@ export const FormThree = ({ back }) => {
                     return selected;
                   }}
                   className="w-52">
-                  {updatedSkilles.map((name) => (
+                  {updatedSkillesThree.map((name) => (
                     <MenuItem key={name} value={name}>
                       {name}
                     </MenuItem>
@@ -331,7 +331,7 @@ export const FormThree = ({ back }) => {
                   size="small"
                   displayEmpty
                   value={element.level}
-                  onChange={(e) => handleChange(index, e)}
+                  onChange={(e) => handleChangeThree(index, e)}
                   renderValue={(selected) => {
                     if (!selected) {
                       return (
@@ -355,12 +355,12 @@ export const FormThree = ({ back }) => {
                   style={{
                     color: "#ffffff",
                     backgroundColor:
-                      experience.length === 1 ? "#66B2B2" : "#008080",
+                      experienceThree.length === 1 ? "#66B2B2" : "#008080",
                     borderColor: "#66B2B2",
                     borderWidth: 1,
                   }}
-                  disabled={experience.length === 1}
-                  onClick={() => removeSkillFields(index)}>
+                  disabled={experienceThree.length === 1}
+                  onClick={() => removeSkillFieldsThree(index)}>
                   Remove
                 </Button>
               </div>
@@ -375,7 +375,7 @@ export const FormThree = ({ back }) => {
                 borderColor: "#66B2B2",
                 borderWidth: 1,
               }}
-              onClick={() => addSkillFields()}>
+              onClick={() => addSkillFieldsThree()}>
               Add Industry
             </Button>
           </div>
