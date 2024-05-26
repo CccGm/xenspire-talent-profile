@@ -16,6 +16,7 @@ export const CandidateQuestions = () => {
 
   React.useEffect(() => {
     timeStart();
+    getQuestion();
   }, []);
 
   const handleNext = () => {
@@ -25,6 +26,16 @@ export const CandidateQuestions = () => {
     } else {
       setActiveStep((prevActiveStep) => prevActiveStep + 1);
     }
+  };
+
+  // setQuestions for candidateAssesment
+  const getQuestion = async () => {
+    axios
+      .get("localhost:3000")
+      .then((data) => {
+        setQuestions(data.data);
+      })
+      .catch((e) => console.log(e));
   };
 
   const saveApiData = async () => {

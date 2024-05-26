@@ -16,7 +16,18 @@ export const ClientQuestions = () => {
 
   React.useEffect(() => {
     timeStart();
+    getQuestion();
   }, []);
+
+  // setQuestions for clientAssesment
+  const getQuestion = async () => {
+    axios
+      .get("localhost:3000")
+      .then((data) => {
+        setQuestions(data.data);
+      })
+      .catch((e) => console.log(e));
+  };
 
   const handleNext = () => {
     if (qustions?.length === activeStep + 1) {
