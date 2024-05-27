@@ -68,8 +68,6 @@ export const ClientQuestions = () => {
   const handleBack = () => {
     if (activeStep > 0) {
       setActiveStep((prevActiveStep) => prevActiveStep - 1);
-    } else {
-      navigate(-1);
     }
   };
 
@@ -103,6 +101,8 @@ export const ClientQuestions = () => {
           save={handleSaveQuestion}
           next={handleNext}
           back={handleBack}
+          length={qustions?.length}
+          activeStep={activeStep}
         />
       </div>
       <NavBar />

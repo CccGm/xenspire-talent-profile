@@ -3,7 +3,7 @@ import { Button } from "@mui/material";
 import { RadioQuestion } from "./radio_question";
 import { ArrangeQuestion } from "./arrange_question";
 
-export const Question = ({ qustion, save, next, back }) => {
+export const Question = ({ qustion, save, next, back, length, activeStep }) => {
   const [answer, setAnswer] = React.useState(null);
 
   useEffect(() => {
@@ -20,13 +20,12 @@ export const Question = ({ qustion, save, next, back }) => {
           variant="contained"
           style={{
             color: "#ffffff",
-            backgroundColor:
-              qustion.questionnaireNo === 1 ? "#66B2B2" : "#008080",
+            backgroundColor: activeStep === 1 ? "#66B2B2" : "#008080",
             borderColor: "#66B2B2",
             borderWidth: 1,
           }}
           onClick={back}
-          disabled={qustion.questionnaireNo === 1}>
+          disabled={activeStep === 1}>
           Previous
         </Button>
         <Button
@@ -42,7 +41,7 @@ export const Question = ({ qustion, save, next, back }) => {
             next();
             save(answer);
           }}>
-          {qustion.questionnaireNo === 20 ? "Submit" : "Save & Next"}
+          {activeStep === length ? "Submit" : "Save & Next"}
         </Button>
       </div>
       <div className="mt-10 mx-24">
