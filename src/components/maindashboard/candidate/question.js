@@ -6,6 +6,7 @@ import { useAppContext } from "../../../context";
 import { Question } from "../../questions";
 import { NavBar } from "../../widgets/navbar";
 import { Footer } from "../../widgets/footer";
+import { CandidateSideNav } from "../../widgets/candidateSideNav";
 
 export const CandidateQuestions = () => {
   const [activeStep, setActiveStep] = React.useState(0);
@@ -72,38 +73,40 @@ export const CandidateQuestions = () => {
   };
 
   return (
-    <div className="my-24">
-      {/* stepper */}
-      <div className="w-full  items-center fixed ">
-        <div className="flex items-center justify-center pl-36">
-          <text className="text-app-Teal">
-            Q{activeStep + 1} / {qustions?.length}
-          </text>
-          <MobileStepper
-            variant="progress"
-            steps={qustions?.length + 1}
-            position="static"
+    <div className="flex">
+      <CandidateSideNav />
+      <div className="my-24 w-full">
+        {/* stepper */}
+        <div className="w-full  items-center fixed ">
+          <div className="flex items-center justify-center pl-36">
+            <text className="text-app-Teal">
+              Q{activeStep + 1} / {qustions?.length}
+            </text>
+            <MobileStepper
+              variant="progress"
+              steps={qustions?.length + 1}
+              position="static"
+              activeStep={activeStep + 1}
+              sx={{
+                maxWidth: 400,
+                flexGrow: 1,
+                ".MuiMobileStepper-progress ": {
+                  color: "#008080",
+                },
+              }}
+            />
+          </div>
+        </div>
+        <div>
+          <Question
+            qustion={qustions[activeStep]}
+            save={handleSaveQuestion}
+            next={handleNext}
+            back={handleBack}
+            length={qustions?.length}
             activeStep={activeStep + 1}
-            sx={{
-              maxWidth: 400,
-              flexGrow: 1,
-              ".MuiMobileStepper-progress ": {
-                color: "#008080",
-              },
-            }}
           />
         </div>
-      </div>
-
-      <div>
-        <Question
-          qustion={qustions[activeStep]}
-          save={handleSaveQuestion}
-          next={handleNext}
-          back={handleBack}
-          length={qustions?.length}
-          activeStep={activeStep + 1}
-        />
       </div>
       <NavBar />
       <Footer />

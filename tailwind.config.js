@@ -16,6 +16,7 @@ module.exports = {
         gray900: "#101828",
         lightBlue: "#f1f5f9",
         tableBorder: "#CFCFCF",
+        green: "#729434",
       },
     },
   },
